@@ -1,6 +1,7 @@
 package ch.bissbert.bissblog.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * A DAO interface to service the persistence of entities.
@@ -50,6 +51,14 @@ public interface Dao <T> {
      * @throws DaoException If an error occurs.
      */
     public void delete(T entity) throws DaoException;
+
+    /**
+     * Reads all entities.
+     *
+     * @return The entities.
+     * @throws DaoException If an error occurs.
+     */
+    public List<T> readAll() throws DaoException;
 
     /**
      * Exception thrown by the DAO.

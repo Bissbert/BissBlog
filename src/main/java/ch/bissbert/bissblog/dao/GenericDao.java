@@ -135,6 +135,27 @@ public class GenericDao<T> implements Dao<T> {
     }
 
     /**
+     * read all the entities from the database using hibernate session
+     * {@inheritDoc}
+     *
+     * @return the list of entities
+     * @throws DaoException if an error occurs
+     */
+    @Override
+    public List<T> readAll() throws DaoException {
+        // create a session from the session factory
+        try (Session session = sessionFactory.openSession()) {
+            // begin a transaction
+            session.beginTransaction();
+            // read all the entities
+            List<T> entities = session.createQuery("from " + type.getName()).list();
+            // commit the transaction
+            session.getTransaction().commit();
+            return entities;
+        }
+    }
+
+    /**
      * Execute a named query in the database using hibernate session
      *
      * @param queryName the name of the query to be executed
