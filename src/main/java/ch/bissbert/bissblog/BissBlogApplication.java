@@ -1,0 +1,13 @@
+package ch.bissbert.bissblog;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BissBlogApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BissBlogApplication.class, args);
+	}
+
+}
